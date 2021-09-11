@@ -6,21 +6,9 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Input A:");
-            int X = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Input Y:");
-            int Y = Convert.ToInt32(Console.ReadLine());
-            int sum,subtract,multiply,divide;
-            sum = X + Y;
-            subtract = X - Y;
-            multiply = X * Y;
-            divide = X / Y;
-
-            Console.WriteLine("Sum: " + sum);
-            Console.WriteLine("Sum: " + subtract);
-            Console.WriteLine("Sum: " + multiply);
-            Console.WriteLine("Sum: " + divide);
-
+            Console.WriteLine("Please enter your name");
+            String name=Console.ReadLine();
+            Console.WriteLine("Hello " + name);
         }
     }
 }
