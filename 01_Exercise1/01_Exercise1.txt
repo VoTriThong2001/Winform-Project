@@ -1,6 +1,6 @@
 using System;
 
-namespace HelloWorld
+namespace _01_Exercise1
 {
     class Program
     {
