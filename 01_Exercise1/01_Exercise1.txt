@@ -6,7 +6,7 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Input X:");
+            Console.WriteLine("Input A:");
             int X = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Input Y:");
             int Y = Convert.ToInt32(Console.ReadLine());
