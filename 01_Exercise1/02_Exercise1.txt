@@ -18,9 +18,9 @@ namespace _02_Exercise1
             divide = X / Y;
 
             Console.WriteLine("Sum: " + sum);
-            Console.WriteLine("Sum: " + subtract);
-            Console.WriteLine("Sum: " + multiply);
-            Console.WriteLine("Sum: " + divide);
+            Console.WriteLine("Subtract: " + subtract);
+            Console.WriteLine("Multiply: " + multiply);
+            Console.WriteLine("Divide: " + divide);
 
         }
     }
