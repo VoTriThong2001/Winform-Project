@@ -1,7 +1,7 @@
   
 using System;
 
-namespace _01_Exercise2
+namespace _02_Exercise1
 {
     class Program
     {
