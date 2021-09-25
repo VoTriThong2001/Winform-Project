@@ -40,7 +40,7 @@
         <TextBlock Grid.Row="4" Grid.Column="2" ></TextBlock>
 
         <TextBlock Grid.Row="1" Grid.Column="3" Text="Region:" ></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="Postal code:" ></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="Postal Code:" ></TextBlock>
         <TextBlock Grid.Row="4" Grid.Column="3" Text="Extension:" ></TextBlock>
 
         <TextBox Grid.Row="1" Grid.Column="4" ></TextBox>
