@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Lab01
 {
@@ -47,6 +49,7 @@ namespace Lab01
             Faculty = faculty;
         }
 
+
         public void Input()
         {
             Console.Write("Nhập MSSV: ");
@@ -64,26 +67,59 @@ namespace Lab01
         {
             Console.WriteLine("MSSV: {0} Họ Tên: {1} Khoa: {2} ĐiểmTB: {3}", this.StudentID, this.FullName, this.Faculty, this.AverageScore);
         }
+
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.InputEncoding = System.Text.Encoding.Unicode;
 
-            Console.Write("Nhập tổng số sinh viên N = ");
-            int N = Convert.ToInt32(Console.ReadLine());
-            Student[] arrStudents = new Student[N];
-            Console.WriteLine("\n ====Nhập Danh Sách sinh viên====");
-            for (int i=0; i<N; i++)
+            List<Student> students = new List<Student>();
+            students.Add(new Student("SV01", "Nguyen Van A", 8, "CNTT"));
+            students.Add(new Student("SV02", "Nguyen Van A", 7, "CNTT"));
+            students.Add(new Student("SV03", "Nguyen Van A", 9, "CNTT"));
+            students.Add(new Student("SV04", "Nguyen Van A", 10, "xe"));
+            students.Add(new Student("SV05", "Nguyen Van A", 8, "CNTT"));
+            students.Add(new Student("SV06", "Nguyen Van A", 3,  "CNTT"));
+            students.Add(new Student("SV07", "Nguyen Van A", 4, "CNTT"));
+
+
+            var cnttStudents = students.FindAll(x => x.Faculty == "CNTT");
+            var avgOver5 = students.FindAll(x => x.AverageScore >= 5);
+            var cnttAndAvgOver5 = students.FindAll(x => x.Faculty == "CNTT" && x.AverageScore >= 5);
+            var maxCNTTAvg = cnttStudents.Max(x => x.AverageScore);
+            
+            Console.WriteLine("1.1 (Khóa CNTT) ");
+            foreach (var item in cnttStudents)
             {
-                Console.WriteLine("\n - Nhập sinh viên thứ {0}", i + 1);
-                arrStudents[i] = new Student();
-                arrStudents[i].Input();
+                Console.WriteLine("MSSV: {0} Họ Tên: {1} Khoa: {2} ĐiểmTB: {3}", item.StudentID, item.FullName, item.Faculty, item.AverageScore);
             }
-            Console.WriteLine("\n ====Xuất Danh Sách sinh viên====");
-            foreach (Student sv in arrStudents)
+
+            Console.WriteLine("\n1.2: (TB lớn hơn 5) ");
+            foreach (var item in avgOver5)
+            {
+                Console.WriteLine("MSSV: {0} Họ Tên: {1} Khoa: {2} ĐiểmTB: {3}", item.StudentID, item.FullName, item.Faculty, item.AverageScore);
+            }
+
+            Console.WriteLine("\n1.3: (Sắp xếp theo điểm TB tăng dần) ");
+            List<Student> sortStudents = students.OrderBy(x => x.AverageScore).ToList();
+            foreach (Student sv in sortStudents)
             {
                 sv.Show();
             }
+
+            Console.WriteLine("\n1.4: (có điểm TB lớn hơn bằng 5 và khóa CNTT)");
+            foreach (var item in cnttAndAvgOver5)
+            {
+                Console.WriteLine("MSSV: {0} Họ Tên: {1} Khoa: {2} ĐiểmTB: {3}", item.StudentID, item.FullName, item.Faculty, item.AverageScore);
+            }
+
+            Console.WriteLine("\n1.5: (có điểm TB lớn hơn bằng 5 và khóa CNTT)");
+            foreach (var item in cnttStudents)
+            if (item.AverageScore == maxCNTTAvg)
+            {
+                Console.WriteLine("MSSV: {0} Họ Tên: {1} Khoa: {2} ĐiểmTB: {3}", item.StudentID, item.FullName, item.Faculty, item.AverageScore);             
+            }
+
             Console.ReadKey();
         }
     }
