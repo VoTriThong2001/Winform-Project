@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exercise5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="506" Width="858">
+        Title="MainWindow" Height="152" Width="410" MinHeight="152" MinWidth="410"  MaxWidth="410"  MaxHeight="152">
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -16,35 +15,37 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="100"   MinWidth="100"  MaxWidth="200"></ColumnDefinition>
+            <ColumnDefinition Width="100"   MinWidth="100"  MaxWidth="200"> </ColumnDefinition>
+            <ColumnDefinition Width="5"     MinWidth="5"    MaxWidth="10"></ColumnDefinition>
+            <ColumnDefinition Width="100"   MinWidth="100"  MaxWidth="200"></ColumnDefinition>
+            <ColumnDefinition Width="100"   MinWidth="100"  MaxWidth="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Address info" Background="LightGray" Grid.ColumnSpan="5" ></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Country:"     MinWidth="200"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="City:"        MinWidth="200"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Address:"     MinWidth="200"></TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Home phone:"  MinWidth="200"></TextBlock>
+  
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Address info" Background="LightGray" Grid.ColumnSpan="5"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Country:"     ></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="City:"        ></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Address:"     ></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Home phone:"  ></TextBlock>
 
-        <TextBox Grid.Row="1" Grid.Column="1" MinWidth="200"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" MinWidth="200"></TextBox>
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" MinWidth="600"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="1" MinWidth="200"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" ></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" ></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="1" ></TextBox>
 
 
-        <TextBlock Grid.Row="1" Grid.Column="2" MaxWidth="5" MinWidth="5"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="2" MaxWidth="5" MinWidth="5"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="2" MaxWidth="5" MinWidth="5"></TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="2" MaxWidth="5" MinWidth="5"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="2" ></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="2" ></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2" ></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="2" ></TextBlock>
 
-        <TextBlock Grid.Row="1" Grid.Column="3" Text="Region:" MinWidth="200"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="Postal code:" MinWidth="200"></TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="3" Text="Extension:" MinWidth="200"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="Region:" ></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="Postal code:" ></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="3" Text="Extension:" ></TextBlock>
 
-        <TextBox Grid.Row="1" Grid.Column="4" MinWidth="200"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="4" MinWidth="200"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="4" MinWidth="200"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="4" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="4" ></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="4" ></TextBox>
+
     </Grid>
 </Window>
