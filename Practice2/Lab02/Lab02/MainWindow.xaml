@@ -1,0 +1,102 @@
+﻿<Window x:Class="Lab02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab02"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="770" MinHeight="350" MinWidth="770">
+   
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" ></RowDefinition>
+                <RowDefinition Height="210"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"   MinWidth="75"  MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition Width="300"   MinWidth="100"  MaxWidth="300"></ColumnDefinition>
+                <ColumnDefinition Width="10"   MinWidth="10"  MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition Width="75"   MinWidth="75"  MaxWidth="300"></ColumnDefinition>
+                <ColumnDefinition Width="300"   MinWidth="100"  MaxWidth="300"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="First name: " ></TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="Last name: " ></TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="4"></TextBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Header="Contact">
+            <StackPanel Grid.Row="1" Grid.Column="0" Width="auto" Grid.ColumnSpan="5">
+                
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" ></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"   MinWidth="100"  MaxWidth="100"></ColumnDefinition>
+                        <ColumnDefinition Width="300"   MinWidth="300"  MaxWidth="300"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Phone: " ></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Email: " ></TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
+
+                </Grid>
+
+                <GroupBox Header="Address">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" ></RowDefinition>
+                                <RowDefinition Height="15" ></RowDefinition>
+                                <RowDefinition Height="30" ></RowDefinition>
+                                <RowDefinition Height="15"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Grid.Column="0"></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="0"></TextBox>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Header="Personal" >
+            <StackPanel Grid.Row="2" Grid.Column="0" Width="auto" Grid.ColumnSpan="5">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" ></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"   MinWidth="100"  MaxWidth="100"></ColumnDefinition>
+                    <ColumnDefinition Width="300"   MinWidth="300"  MaxWidth="300"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Gender: " ></TextBlock>
+                <ComboBox Grid.Row="0" Grid.Column="1">
+                    <ComboBoxItem IsSelected="True">Male </ComboBoxItem>
+                    <ComboBoxItem> Female</ComboBoxItem>
+                </ComboBox>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Birth date: " ></TextBlock>
+                
+                <DatePicker Grid.Row="1" Grid.Column="1">
+                        
+                </DatePicker>
+            </Grid>
+                
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+   
+</Window>
