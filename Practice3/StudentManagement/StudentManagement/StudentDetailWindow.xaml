@@ -66,11 +66,6 @@
             <RadioButton GroupName="Gender" Grid.Column="0" IsChecked="{Binding IsMale}" >Male</RadioButton>
             <RadioButton GroupName="Gender"  Grid.Column="1" IsChecked="{Binding IsFemale}" >Female</RadioButton>
         </Grid>
-        <!--<ComboBox Grid.Row="8" Grid.Column="2">
-            <ComboBoxItem Selected="{Binding ClassDetail}">19DTHQA1</ComboBoxItem>
-            <ComboBoxItem Selected="{Binding ClassDetail}">19DTHQA2</ComboBoxItem>
-            <ComboBoxItem Selected="{Binding ClassDetail}">19DTHQA3</ComboBoxItem>
-        </ComboBox>-->
         <ComboBox Grid.Row="8" Grid.Column="2" VerticalAlignment="Center" Text="{Binding ClassDetail}">
             <ComboBoxItem IsSelected="true" Content="{Binding Path=Class}"></ComboBoxItem>
             <ComboBoxItem>19DTHQA1</ComboBoxItem>
