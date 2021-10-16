@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:StudentManagement"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-
+    
+    
+    <Window.DataContext>
+        <local:StudentSearchViewModel></local:StudentSearchViewModel>
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"></Setter>
@@ -48,23 +52,32 @@
         <TextBlock Grid.Row="8" Grid.Column="0"> Class</TextBlock>
         <TextBlock Grid.Row="10" Grid.Column="0"> Email</TextBlock>
 
-        <TextBox Grid.Row="0" Grid.Column="2"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="2"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="2"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=StudentIdDetail}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=FirstnameDetail}"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=LastnameDetail}"></TextBox>
+        <TextBox Grid.Row="10" Grid.Column="2" Text="{Binding Path=EmailDetail}"></TextBox>
         <Grid Grid.Row="6" Grid.Column="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <RadioButton Grid.Column="0">Male</RadioButton>
-            <RadioButton Grid.Column="1">Female</RadioButton>
+
+            <RadioButton GroupName="Gender" Grid.Column="0" IsChecked="{Binding IsMale}" >Male</RadioButton>
+            <RadioButton GroupName="Gender"  Grid.Column="1" IsChecked="{Binding IsFemale}" >Female</RadioButton>
         </Grid>
-        <ComboBox Grid.Row="8" Grid.Column="2">
-            <ComboBoxItem IsSelected="True"> 19DTHQA1</ComboBoxItem>
+        <!--<ComboBox Grid.Row="8" Grid.Column="2">
+            <ComboBoxItem Selected="{Binding ClassDetail}">19DTHQA1</ComboBoxItem>
+            <ComboBoxItem Selected="{Binding ClassDetail}">19DTHQA2</ComboBoxItem>
+            <ComboBoxItem Selected="{Binding ClassDetail}">19DTHQA3</ComboBoxItem>
+        </ComboBox>-->
+        <ComboBox Grid.Row="8" Grid.Column="2" VerticalAlignment="Center" Text="{Binding ClassDetail}">
+            <ComboBoxItem IsSelected="true" Content="{Binding Path=Class}"></ComboBoxItem>
+            <ComboBoxItem>19DTHQA1</ComboBoxItem>
             <ComboBoxItem>19DTHQA2</ComboBoxItem>
+            <ComboBoxItem>19DTHQA3</ComboBoxItem>
         </ComboBox>
-        <TextBox Grid.Row="10" Grid.Column="2"></TextBox>
+        
         <Button Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right"> Save</Button>
         <Button Grid.Row="12" Grid.Column="2" HorizontalAlignment="Left">Cancel</Button>
     </Grid>
