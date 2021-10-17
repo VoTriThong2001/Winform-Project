@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StudentManagement
 {
-    public class StudenttDetailViewModel : BaseViewModel
+    public class StudentDetailViewModel : BaseViewModel
     {
         public int StudentIdDetail { get; set; }
         public string FirstnameDetail { get; set; }
@@ -51,7 +51,7 @@ namespace StudentManagement
                 OnPropertyChanged(nameof(IsFemale));
             }
         }
-        public StudenttDetailViewModel(Student student)
+        public StudentDetailViewModel(Student student)
         {
 
             StudentIdDetail = student.studentId;

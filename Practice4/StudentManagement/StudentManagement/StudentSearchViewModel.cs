@@ -66,7 +66,7 @@ namespace StudentManagement
 
         public void DoOpenDetail()
         {
-            var studentDetailViewModel = new StudentDetailViewModel(SelectedStudent);
+            var studentDetailViewModel = new StudenttDetailViewModel(SelectedStudent);
             Window1 studentDetail = new Window1();
             studentDetail.DataContext = studentDetailViewModel;
             studentDetail.ShowDialog();
@@ -74,12 +74,29 @@ namespace StudentManagement
 
 
         public ObservableCollection<Student> Students { get; set; }
+        private IStudentService m_studentSrv;
+        public void DoReset()
+        {
+            SearchKeyword = null;
+            SelectedClass = null;
+        }
+        private void DoSearch()
+        {
+            Students.Clear();
+            var result = m_studentSrv.SearchStudent(SearchKeyword, SelectedClass);
+            foreach (var s in result)
+            {
+                Students.Add(s);
+            }
+        }
         public StudentSearchViewModel()
         {
-            var jsonString = File.ReadAllText("Student_Data.json");
-            var students = JsonSerializer.Deserialize<List<Student>>(jsonString);
-            Students = new ObservableCollection<Student>(students);
+            m_studentSrv = new StudentServiceWithFile();
+            Students = new ObservableCollection<Student>(m_studentSrv.SearchStudent(string.Empty, string.Empty));
+
             OpenDetailCommand = new ConditionalCommand(x => DoOpenDetail());
+            SearchCommand = new ConditionalCommand(x => DoSearch());
+            ResetCommand = new ConditionalCommand(x =>DoReset());
         }
 
 
