@@ -72,9 +72,9 @@
             <ComboBoxItem>19DTHQA2</ComboBoxItem>
             <ComboBoxItem>19DTHQA3</ComboBoxItem>
         </ComboBox>
-        
-        <Button Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right"> Save</Button>
-        <Button Grid.Row="12" Grid.Column="2" HorizontalAlignment="Left">Cancel</Button>
+
+        <Button Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right" Command="{Binding DoSave}"> Save</Button>
+        <Button Grid.Row="12" Grid.Column="2" HorizontalAlignment="Left" Command="{Binding DoCancel}">Cancel</Button>
     </Grid>
         
 </Window>

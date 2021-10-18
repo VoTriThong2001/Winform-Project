@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 
 namespace StudentManagement
 {
@@ -51,9 +53,15 @@ namespace StudentManagement
                 OnPropertyChanged(nameof(IsFemale));
             }
         }
-        public StudentDetailViewModel(Student student)
-        {
 
+        public ICommand SaveCommand { get; set; }
+
+        private readonly IStudentService m_studentService;
+        public StudentDetailViewModel(IStudentService studentService, int studentId)
+        {
+            m_studentService = studentService;
+
+            var student = m_studentService.LoadStudentById(studentId);
             StudentIdDetail = student.studentId;
             FirstnameDetail = student.firstname;
             LastnameDetail = student.lastname;
@@ -64,6 +72,18 @@ namespace StudentManagement
             ClassDetail = student.Class;
             GpaDetail = student.gpa;
 
+            SaveCommand = new ConditionalCommand(x => DoSave());
+            SaveCommand = new ConditionalCommand(x => DoCancel());
+        }
+
+        private void DoCancel()
+        {
+            throw new NotImplementedException();
+        }
+        public IList<Student> m_student;
+        private void DoSave()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -60,13 +60,17 @@ namespace StudentManagement
             }
         }
 
+       
+
         public ICommand SearchCommand { get; set; }
         public ICommand ResetCommand { get; set; }
         public ICommand OpenDetailCommand { get; set; }
 
+        private readonly IStudentService studentService;
         public void DoOpenDetail()
         {
-            var studentDetailViewModel = new StudenttDetailViewModel(SelectedStudent);
+            
+            var studentDetailViewModel = new StudentDetailViewModel(studentService, SelectedStudent.studentId); 
             Window1 studentDetail = new Window1();
             studentDetail.DataContext = studentDetailViewModel;
             studentDetail.ShowDialog();
@@ -91,6 +95,7 @@ namespace StudentManagement
         }
         public StudentSearchViewModel()
         {
+            
             m_studentSrv = new StudentServiceWithFile();
             Students = new ObservableCollection<Student>(m_studentSrv.SearchStudent(string.Empty, string.Empty));
 

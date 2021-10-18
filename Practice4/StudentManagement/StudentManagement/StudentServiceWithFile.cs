@@ -30,11 +30,11 @@ namespace StudentManagement
         {
             return m_students.FirstOrDefault(x => x.studentId == id);
         }
-        private IList<Student> m_SearchStudent;
+        private readonly IList<Student> m_SearchStudent;
         public IList<Student> SearchStudent(string keyword, string hutechClass)
         {   
 
-            var result = m_students.Where(s => s.Class == hutechClass && (s.firstname==keyword || s.lastname == keyword))
+            var result = m_SearchStudent.Where(s => s.Class == hutechClass && (s.firstname==keyword || s.lastname == keyword))
                                .OrderBy(s => s.firstname)
                                .Select(s => s.firstname + " " + s.lastname + " - " + s.studentId);
 
