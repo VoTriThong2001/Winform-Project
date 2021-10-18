@@ -41,6 +41,7 @@ namespace StudentManagement
             foreach (var s in result)
             {
                 Console.WriteLine(s);
+                m_SearchStudent.Add(); // ???
             }
             return m_SearchStudent;
         }

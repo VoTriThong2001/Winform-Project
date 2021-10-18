@@ -80,10 +80,18 @@ namespace StudentManagement
         {
             throw new NotImplementedException();
         }
-        public IList<Student> m_student;
+        public Student m_student;
         private void DoSave()
         {
-            throw new NotImplementedException();
+            m_student.studentId = StudentIdDetail;
+            m_student.firstname = FirstnameDetail;
+            m_student.lastname = LastnameDetail;
+            m_student.gender = GenderDetail;
+            m_student.email = EmailDetail;
+            m_student.Class = ClassDetail;
+            m_student.gpa = GpaDetail;
+
+            m_studentService.UpdateOrCreateStudent(m_student);
         }
     }
 }
