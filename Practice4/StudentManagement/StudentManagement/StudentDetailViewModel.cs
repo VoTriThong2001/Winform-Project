@@ -54,7 +54,9 @@ namespace StudentManagement
             }
         }
 
+
         public ICommand SaveCommand { get; set; }
+        public ICommand CancelCommand { get; set; }
 
         private readonly IStudentService m_studentService;
         public StudentDetailViewModel(IStudentService studentService, int studentId)
@@ -66,14 +68,12 @@ namespace StudentManagement
             FirstnameDetail = student.firstname;
             LastnameDetail = student.lastname;
             GenderDetail = student.gender;
-            IsMale = (GenderDetail == "Male");
-
             EmailDetail = student.email;
             ClassDetail = student.Class;
             GpaDetail = student.gpa;
 
             SaveCommand = new ConditionalCommand(x => DoSave());
-            SaveCommand = new ConditionalCommand(x => DoCancel());
+            CancelCommand = new ConditionalCommand(x => DoCancel());
         }
 
         private void DoCancel()

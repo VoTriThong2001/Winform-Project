@@ -36,13 +36,16 @@
 
                     <Label FontSize="15">Search Student</Label>
                     <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding SearchKeyword}"></TextBox>
-                    <ComboBox Grid.Row="1" Grid.Column="2" MaxHeight="20">
-                        <ComboBoxItem IsSelected="{Binding SelectedClass}">
+                    <ComboBox Grid.Row="1" Grid.Column="2" MaxHeight="20" Text="{Binding SelectedClass}">
+                        
+                        <ComboBoxItem>
                             19DTHQA1
                         </ComboBoxItem>
-
                         <ComboBoxItem>
                             19DTHQA2
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            19DTHQA3
                         </ComboBoxItem>
 
                     </ComboBox>
