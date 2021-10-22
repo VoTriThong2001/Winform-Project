@@ -66,10 +66,10 @@ namespace StudentManagement
         public ICommand ResetCommand { get; set; }
         public ICommand OpenDetailCommand { get; set; }
 
-        private readonly IStudentService studentService;
+        private IStudentService studentService;
         public void DoOpenDetail()
         {
-            
+            studentService = new StudentServiceWithFile();
             var studentDetailViewModel = new StudentDetailViewModel(studentService, SelectedStudent.studentId); 
             Window1 studentDetail = new Window1();
             studentDetail.DataContext = studentDetailViewModel;
@@ -84,15 +84,7 @@ namespace StudentManagement
             SearchKeyword = null;
             SelectedClass = null;
         }
-        private void DoSearch()
-        {
-            Students.Clear();
-            var result = m_studentSrv.SearchStudent(SearchKeyword, SelectedClass);
-            foreach (var s in result)
-            {
-                Students.Add(s);
-            }
-        }
+       
         public StudentSearchViewModel()
         {
             
@@ -103,7 +95,15 @@ namespace StudentManagement
             SearchCommand = new ConditionalCommand(x => DoSearch());
             ResetCommand = new ConditionalCommand(x =>DoReset());
         }
-
+        private void DoSearch()
+        {
+            Students.Clear();
+            var result = m_studentSrv.SearchStudent(SearchKeyword, SelectedClass);
+            foreach (var s in result)
+            {
+                Students.Add(s);
+            }
+        }
 
     }
    
