@@ -75,7 +75,7 @@ namespace StudentManagement
             ClassDetail = student.Class;
             GpaDetail = student.gpa;
 
-            SaveCommand = new ConditionalCommand(x => DoSave());
+            SaveCommand = new ConditionalCommand(x => DoSave(studentId));
             CancelCommand = new ConditionalCommand(x => DoCancel());
         }
 
@@ -86,11 +86,11 @@ namespace StudentManagement
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        public Student m_student;
+     
 
-        private void DoSave()
+        private void DoSave(int studentId)
         {
-            m_student = new Student();
+            var m_student = m_studentService.LoadStudentById(studentId);
             m_student.studentId = StudentIdDetail;
             m_student.firstname = FirstnameDetail;
             m_student.lastname = LastnameDetail;

@@ -19,7 +19,6 @@ namespace StudentManagement
  
     public partial class Window1 : Window
     {
-
         public Window1(ICloseable context)
         {
             InitializeComponent();
