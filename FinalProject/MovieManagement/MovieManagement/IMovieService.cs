@@ -14,4 +14,9 @@ namespace MovieManagement
 
         void DeleteMovieById(int id);
     }
+
+    public interface ICloseable
+    {
+        event EventHandler CloseRequest;
+    }
 }

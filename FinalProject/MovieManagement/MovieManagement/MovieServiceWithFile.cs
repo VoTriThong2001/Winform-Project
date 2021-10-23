@@ -28,7 +28,7 @@ namespace MovieManagement
 
         public Movie LoadMovieById(long id)
         {
-            return m_movies.FirstOrDefault(x => x.Id == id);
+            return m_movies.FirstOrDefault(x => x.movieId == id);
         }
 
         public IList<Movie> SearchMovie(string title, string genre, int year)
@@ -38,31 +38,23 @@ namespace MovieManagement
                 var result = m_movies.Where(s => (title == null) && (s.Genre == genre || genre == null) && (s.Year == year || year == 0))
                           .OrderBy(s => s.Title).ToList();
 
-                foreach (var s in result)
-                {
-                    Console.WriteLine(s);
-                }
                 return result;
             }
 
             else
-                { 
+            { 
                 var result = m_movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre == genre || genre == null) && (s.Year == year || year == 0))
                          .OrderBy(s => s.Title).ToList();
 
-                foreach (var s in result)
-                {
-                    Console.WriteLine(s);
-                }
             return result;
-             }
+            }
         }
         public void UpdateOrCreateMovie(Movie movie)
         {
-            if (movie.Id > 0)
+            if (movie.movieId > 0)
             {
-                var updatedMovie = LoadMovieById(movie.Id);
-                updatedMovie.Id = movie.Id;
+                var updatedMovie = LoadMovieById(movie.movieId);
+                updatedMovie.movieId = movie.movieId;
                 updatedMovie.Title = movie.Title;
                 updatedMovie.Genre = movie.Genre;
                 updatedMovie.Year = movie.Year;
@@ -71,8 +63,8 @@ namespace MovieManagement
             }
             else
             {
-                var newMovieId = m_movies.Select(s => s.Id).OrderByDescending(s => s).FirstOrDefault();
-                movie.Id = newMovieId + 1;
+                var newMovieId = m_movies.Select(s => s.movieId).OrderByDescending(s => s).FirstOrDefault();
+                movie.movieId = newMovieId + 1;
                 m_movies.Add(movie);
             }
         }

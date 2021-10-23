@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieManagement"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800">
+        Title="Window1" Height="300" Width="800">
     <Window.DataContext>
         <local:MovieSearchViewModel></local:MovieSearchViewModel>
     </Window.DataContext>
@@ -26,14 +26,15 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition MaxWidth="10"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition MaxHeight="50"></RowDefinition>
             <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition MaxHeight="50"></RowDefinition>
             <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition MaxHeight="50"></RowDefinition>
             <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition MaxHeight="50"></RowDefinition>
             <RowDefinition MaxHeight="10"></RowDefinition>
             <RowDefinition MaxHeight="30"></RowDefinition>
             <RowDefinition MaxHeight="10"></RowDefinition>
@@ -47,7 +48,7 @@
 
         <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=TitleDetail}"></TextBox>
         <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=GenreDetail}"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=LastnameDetail}"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=YearDetail}"></TextBox>
         <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Path=RatingDetail}"></TextBox>
         <Grid Grid.Row="6" Grid.Column="2" >
             <Grid.ColumnDefinitions>
@@ -56,7 +57,7 @@
             </Grid.ColumnDefinitions>
         </Grid>
 
-        <Button Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" Command="{Binding DoSave}">Save</Button>
-        <Button Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Command="{Binding DoCancel}">Cancel</Button>
+        <Button Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" Command="{Binding SaveCommand}">Save</Button>
+        <Button Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Command="{Binding CancelCommand}">Cancel</Button>
     </Grid>
 </Window>

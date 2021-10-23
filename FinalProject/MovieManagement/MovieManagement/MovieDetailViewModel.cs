@@ -5,20 +5,20 @@ using System.Windows.Input;
 
 namespace MovieManagement
 {
-    class MovieDetailViewModel : BaseViewModel
+    class MovieDetailViewModel : BaseViewModel, ICloseable
     {
-        private int m_IdDetail;
+        private int m_YearDetail;
         private string m_TitleDetail;
         private string m_GenreDetail;
         private decimal m_RatingDetail;
 
-        public int IdDetail
+        public int YearDetail
         {
-            get => m_IdDetail;
+            get => m_YearDetail;
             set
             {
-                m_IdDetail = value;
-                OnPropertyChanged(nameof(IdDetail));
+                m_YearDetail = value;
+                OnPropertyChanged(nameof(YearDetail));
             }
         }
 
@@ -51,6 +51,7 @@ namespace MovieManagement
             }
 
         }
+       
 
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set; }
@@ -61,23 +62,28 @@ namespace MovieManagement
             m_movieService = movieService;
 
             var movie = m_movieService.LoadMovieById(Id);
-            IdDetail = movie.Id;
+            YearDetail = movie.Year;
             TitleDetail = movie.Title;
             GenreDetail = movie.Genre;
             RatingDetail = movie.Rating;
            
-            SaveCommand = new ConditionalCommand(x => DoSave());
+            SaveCommand = new ConditionalCommand(x => DoSave(Id));
             CancelCommand = new ConditionalCommand(x => DoCancel());
         }
 
+
+        public event EventHandler CloseRequest;
         private void DoCancel()
         {
-            throw new NotImplementedException();
+            var handler = CloseRequest;
+            if (handler != null) handler(this, EventArgs.Empty);
         }
-        public Movie m_movie;
-        private void DoSave()
+      
+
+        private void DoSave(int Id)
         {
-            m_movie.Id = IdDetail;
+            var m_movie = m_movieService.LoadMovieById(Id);
+            m_movie.Year = YearDetail;
             m_movie.Title = TitleDetail;
             m_movie.Genre = GenreDetail;
             m_movie.Rating = RatingDetail;

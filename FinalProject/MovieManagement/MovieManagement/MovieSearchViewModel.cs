@@ -9,7 +9,7 @@ namespace MovieManagement
 
     public class Movie
     {
-        public int Id { get; set; }
+        public int movieId { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
         public int Year { get; set; }
@@ -96,9 +96,10 @@ namespace MovieManagement
 
         public void DoOpenDetail()
         {
-            movieService = new MovieServiceWithFile();
-            var movieDetailViewModel = new MovieDetailViewModel(movieService , SelectedMovie.Id);
-            MainWindow studentDetail = new MainWindow();
+            movieService = new MovieServiceWithEF();
+            //movieService = new MovieServiceWithFile();
+            var movieDetailViewModel = new MovieDetailViewModel(movieService , SelectedMovie.movieId);
+            Window1 studentDetail = new Window1(movieDetailViewModel);
             studentDetail.DataContext = movieDetailViewModel;
             studentDetail.ShowDialog();
         }
@@ -122,7 +123,8 @@ namespace MovieManagement
         }
         public MovieSearchViewModel()
         {
-            m_movieSrv = new MovieServiceWithFile();
+            m_movieSrv = new MovieServiceWithEF();
+            //m_movieSrv = new MovieServiceWithFile();
             Movies = new ObservableCollection<Movie>(m_movieSrv.SearchMovie(string.Empty, string.Empty, int.MinValue));
 
             OpenDetailCommand = new ConditionalCommand(x => DoOpenDetail());

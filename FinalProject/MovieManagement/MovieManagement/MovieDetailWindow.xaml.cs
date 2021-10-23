@@ -17,9 +17,10 @@ namespace MovieManagement
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        public Window1(ICloseable context)
         {
             InitializeComponent();
+            context.CloseRequest += (s, e) => this.Close();
         }
     }
 }

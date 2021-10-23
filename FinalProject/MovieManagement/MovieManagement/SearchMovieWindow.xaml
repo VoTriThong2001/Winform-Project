@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MovieManagement"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Window.DataContext>
         <local:MovieSearchViewModel/>
     </Window.DataContext>
@@ -42,7 +43,7 @@
             
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">Genre:</TextBlock>
             <ComboBox Grid.Row="1" Grid.Column="4" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedGenre}">
-                <ComboBoxItem IsSelected="True">Comedy</ComboBoxItem>
+                <ComboBoxItem>Comedy</ComboBoxItem>
                 <ComboBoxItem>Sci-Fi</ComboBoxItem>
                 <ComboBoxItem>Drama</ComboBoxItem>
                 <ComboBoxItem>War</ComboBoxItem>
@@ -56,7 +57,7 @@
 
             <TextBlock Grid.Row="1" Grid.Column="6" VerticalAlignment="Center">Year:</TextBlock>
             <ComboBox Grid.Row="1" Grid.Column="8" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedYear}">
-                <ComboBoxItem IsSelected="True">1980</ComboBoxItem>
+                <ComboBoxItem>1980</ComboBoxItem>
                 <ComboBoxItem>1981</ComboBoxItem>
                 <ComboBoxItem>1982</ComboBoxItem>
                 <ComboBoxItem>1983</ComboBoxItem>
