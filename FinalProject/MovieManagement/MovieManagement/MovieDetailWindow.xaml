@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieManagement"
         mc:Ignorable="d"
-        Title="Window1" Height="300" Width="800">
+        Title="Movie Detail" Height="300" Width="600">
     <Window.DataContext>
         <local:MovieSearchViewModel></local:MovieSearchViewModel>
     </Window.DataContext>
@@ -21,6 +21,9 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="10"></ColumnDefinition>
+            <ColumnDefinition MaxWidth="80"></ColumnDefinition>
+            <ColumnDefinition MaxWidth="10"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition MaxWidth="10"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -40,16 +43,16 @@
             <RowDefinition MaxHeight="10"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0"> Title</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="0"> Genre</TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="0"> Year</TextBlock>
-        <TextBlock Grid.Row="6" Grid.Column="0"> Rating</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1"> Title:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1"> Genre:</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1"> Year:</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="1"> Rating:</TextBlock>
 
 
-        <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=TitleDetail}"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=GenreDetail}"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=YearDetail}"></TextBox>
-        <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Path=RatingDetail}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=TitleDetail}" TextWrapping="WrapWithOverflow" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=GenreDetail}" TextWrapping="WrapWithOverflow"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=YearDetail}"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=RatingDetail}"></TextBox>
         <Grid Grid.Row="6" Grid.Column="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -57,7 +60,7 @@
             </Grid.ColumnDefinitions>
         </Grid>
 
-        <Button Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" Command="{Binding SaveCommand}">Save</Button>
-        <Button Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Command="{Binding CancelCommand}">Cancel</Button>
+        <Button Grid.Row="8" Grid.Column="3" HorizontalAlignment="Right" Command="{Binding SaveCommand}">Save</Button>
+        <Button Grid.Row="8" Grid.Column="5" HorizontalAlignment="Left" Command="{Binding CancelCommand}">Cancel</Button>
     </Grid>
 </Window>

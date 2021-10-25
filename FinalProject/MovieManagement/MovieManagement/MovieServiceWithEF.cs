@@ -25,7 +25,7 @@ namespace MovieManagement
             }
         }
 
-        public Movie LoadMovieById(long id)
+        public Movie LoadMovieById(int id)
         {
             using (var ctx = new MovieContext())
             {
@@ -39,7 +39,7 @@ namespace MovieManagement
             {
                 if (title == null)
                 {
-                var result = ctx.Movies.Where(s => (title == null) && (s.Genre == genre || genre == null) && (s.Year == year || year == 0))
+                var result = ctx.Movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
                             .OrderBy(s => s.Title).ToList();
 
                 return result;
@@ -47,7 +47,7 @@ namespace MovieManagement
 
                 else
                 {
-                    var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre == genre || genre == null) && (s.Year == year || year == 0))
+                    var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
                              .OrderBy(s => s.Title).ToList();
 
                     return result;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieManagement"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Movie Management" Height="450" Width="800">
 
     <Window.DataContext>
         <local:MovieSearchViewModel/>
@@ -22,6 +22,7 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
                 <ColumnDefinition MaxWidth="500"></ColumnDefinition>
                 <ColumnDefinition MaxWidth="10"></ColumnDefinition>
                 <ColumnDefinition MaxWidth="35"></ColumnDefinition>
@@ -38,25 +39,30 @@
                 <ColumnDefinition MaxWidth="10"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label FontSize="15">Movie Management</Label>
-            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding SearchTitle}"></TextBox>
+            <Label FontSize="15"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="14" HorizontalAlignment="Center">Movie Management</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SearchTitle}"></TextBox>
             
-            <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">Genre:</TextBlock>
-            <ComboBox Grid.Row="1" Grid.Column="4" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedGenre}">
-                <ComboBoxItem>Comedy</ComboBoxItem>
-                <ComboBoxItem>Sci-Fi</ComboBoxItem>
-                <ComboBoxItem>Drama</ComboBoxItem>
-                <ComboBoxItem>War</ComboBoxItem>
-                <ComboBoxItem>Documentary</ComboBoxItem>
-                <ComboBoxItem>Fantasy</ComboBoxItem>
-                <ComboBoxItem>Romance</ComboBoxItem>
-                <ComboBoxItem>Horror</ComboBoxItem>
+            <TextBlock Grid.Row="1" Grid.Column="3" VerticalAlignment="Center">Genre:</TextBlock>
+            <ComboBox Grid.Row="1" Grid.Column="5" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedGenre}">
                 <ComboBoxItem>Action</ComboBoxItem>
+                <ComboBoxItem>Comedy</ComboBoxItem>
+                <ComboBoxItem>Crime</ComboBoxItem>
+                <ComboBoxItem>Documentary</ComboBoxItem>
+                <ComboBoxItem>Drama</ComboBoxItem>
+                <ComboBoxItem>Fantasy</ComboBoxItem>
+                <ComboBoxItem>Horror</ComboBoxItem>
                 <ComboBoxItem>Musical</ComboBoxItem>
+                <ComboBoxItem>Mystery</ComboBoxItem>
+                <ComboBoxItem>Film-Noir</ComboBoxItem>
+                <ComboBoxItem>Romance</ComboBoxItem>
+                <ComboBoxItem>War</ComboBoxItem>
+                <ComboBoxItem>Sci-Fi</ComboBoxItem>
+                <ComboBoxItem>Western</ComboBoxItem>
+                <ComboBoxItem>Thriller</ComboBoxItem>
             </ComboBox>
 
-            <TextBlock Grid.Row="1" Grid.Column="6" VerticalAlignment="Center">Year:</TextBlock>
-            <ComboBox Grid.Row="1" Grid.Column="8" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedYear}">
+            <TextBlock Grid.Row="1" Grid.Column="7" VerticalAlignment="Center">Year:</TextBlock>
+            <ComboBox Grid.Row="1" Grid.Column="9" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedYear}">
                 <ComboBoxItem>1980</ComboBoxItem>
                 <ComboBoxItem>1981</ComboBoxItem>
                 <ComboBoxItem>1982</ComboBoxItem>
@@ -93,20 +99,20 @@
                 <ComboBoxItem>2013</ComboBoxItem>
             </ComboBox>
 
-            <Button Grid.Row="1" Grid.Column="10" HorizontalContentAlignment="Center" Command="{Binding SearchCommand}" Height="20" VerticalAlignment="Center">
+            <Button Grid.Row="1" Grid.Column="11" HorizontalContentAlignment="Center" Command="{Binding SearchCommand}" Height="20" VerticalAlignment="Center">
                 Search
             </Button>
 
-            <Button Grid.Row="1" Grid.Column="12" HorizontalContentAlignment="Center" Command="{Binding ResetCommand}" VerticalAlignment="Center">
+            <Button Grid.Row="1" Grid.Column="13" HorizontalContentAlignment="Center" Command="{Binding ResetCommand}" VerticalAlignment="Center">
                 Reset
             </Button>
 
-            <GroupBox Grid.Row="2" Grid.ColumnSpan="13">
+            <GroupBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="13">
 
                 <ListBox x:Name="SearchMovieViewModel" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Border Name="border" BorderBrush="MediumPurple" BorderThickness="1" Padding="5"  Margin="5">
+                            <Border Name="border" BorderBrush="MediumPurple" BorderThickness="2" Padding="5"  Margin="5">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition></RowDefinition>
@@ -115,14 +121,14 @@
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="300"></ColumnDefinition> <!--Title, Genre-->
+                                        <ColumnDefinition MaxWidth="30"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition MinWidth="30"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition MinWidth="30"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>                <!--Year, Rating-->
+                                        <ColumnDefinition MaxWidth="30"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Title: "></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Title}" />
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Title}" TextTrimming="CharacterEllipsis"/>
 
                                     <TextBlock Grid.Row="0" Grid.Column="3" Text="Year: "></TextBlock>
                                     <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Path=Year}"/>
@@ -142,7 +148,7 @@
 
             </GroupBox>
 
-            <Button Grid.Row="3" Grid.Column="10"  HorizontalContentAlignment="Center" Command="{Binding OpenDetailCommand}" Grid.ColumnSpan="3" >Open Movie Detail</Button>
+            <Button Grid.Row="3" Grid.Column="11"  HorizontalContentAlignment="Center" Command="{Binding OpenDetailCommand}" Grid.ColumnSpan="3" >Open Movie Detail</Button>
         </Grid>
 
 

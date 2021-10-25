@@ -8,7 +8,7 @@ namespace MovieManagement
     {
         IList<Movie> SearchMovie(string title, string genre, int year);
 
-        Movie LoadMovieById(long id);
+        Movie LoadMovieById(int id);
 
         void UpdateOrCreateMovie(Movie movie);
 
