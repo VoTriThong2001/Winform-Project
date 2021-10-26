@@ -31,24 +31,87 @@ namespace MovieManagement
             return m_movies.FirstOrDefault(x => x.movieId == id);
         }
 
-        public IList<Movie> SearchMovie(string title, string genre, int year)
+        public IList<Movie> SearchMovie(string title, string genre, int year, string orderBy)
         {
-            if (title == null)
+            if (orderBy == "Title")
             {
-                var result = m_movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
-                          .OrderBy(s => s.Title).ToList();
+                if (title == null)
+                {
+                    var result = m_movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                .OrderBy(s => s.Title).ToList();
 
-                return result;
+                    return result;
+                }
+
+                else
+                {
+                    var result = m_movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                .OrderBy(s => s.Title).ToList();
+
+                    return result;
+                }
+            }
+
+            else if (orderBy == "Year")
+            {
+                if (title == null)
+                {
+                    var result = m_movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                .OrderBy(s => s.Year).ToList();
+
+                    return result;
+                }
+
+                else
+                {
+                    var result = m_movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null)
+                                    && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                .OrderBy(s => s.Year).ToList();
+
+                    return result;
+                }
+            }
+
+            else if (orderBy == "Rating")
+            {
+                if (title == null)
+                {
+                    var result = m_movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                .OrderByDescending(s => s.Rating).ToList();
+
+                    return result;
+                }
+
+                else
+                {
+                    var result = m_movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null)
+                                    && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                    .OrderByDescending(s => s.Rating).ToList();
+
+                    return result;
+                }
             }
 
             else
-            { 
-                var result = m_movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
-                         .OrderBy(s => s.Title).ToList();
+            {
+                if (title == null)
+                {
+                    var result = m_movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null)
+                                    && (s.Year == year || year == 0)).ToList();
 
-            return result;
+                    return result;
+                }
+
+                else
+                {
+                    var result = m_movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null)
+                                    && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0)).ToList();
+
+                    return result;
+                }
             }
         }
+
         public void UpdateOrCreateMovie(Movie movie)
         {
             if (movie.movieId > 0)
@@ -61,6 +124,7 @@ namespace MovieManagement
                 updatedMovie.Rating = movie.Rating;
 
             }
+
             else
             {
                 var newMovieId = m_movies.Select(s => s.movieId).OrderByDescending(s => s).FirstOrDefault();

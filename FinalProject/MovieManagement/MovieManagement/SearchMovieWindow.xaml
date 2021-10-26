@@ -4,8 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieManagement"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="Movie Management" Height="450" Width="800">
+        Title="Movie Management" MinHeight="450" MinWidth="900" Height="450" Width="1000"  MaxWidth="1500">
 
     <Window.DataContext>
         <local:MovieSearchViewModel/>
@@ -14,36 +22,40 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition MaxHeight="40"></RowDefinition>
-                <RowDefinition MaxHeight="25"></RowDefinition>
-                <RowDefinition MaxHeight="400"></RowDefinition>
-                <RowDefinition MaxHeight="20"></RowDefinition>
-                <RowDefinition MaxHeight="10"></RowDefinition>
+                <RowDefinition MinHeight="40" MaxHeight="40"></RowDefinition>
+                <RowDefinition MinHeight="30" MaxHeight="30"></RowDefinition>
+                <RowDefinition MinHeight="300"  ></RowDefinition>
+                <RowDefinition MinHeight="30" MaxHeight="30"></RowDefinition>
+                <RowDefinition MinHeight="10" MaxHeight="10"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="500"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="35"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="35"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="60"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="100"></ColumnDefinition>
-                <ColumnDefinition MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="150"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="35" MaxWidth="35"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100" MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="35" MaxWidth="35"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="60" MaxWidth="60"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="60" MaxWidth="60"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100" MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100" MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100" MaxWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="10" MaxWidth="10"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label FontSize="15"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="14" HorizontalAlignment="Center">Movie Management</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SearchTitle}"></TextBox>
-            
-            <TextBlock Grid.Row="1" Grid.Column="3" VerticalAlignment="Center">Genre:</TextBlock>
-            <ComboBox Grid.Row="1" Grid.Column="5" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedGenre}">
+            <Label FontSize="20"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="17" HorizontalAlignment="Center" TextElement.FontWeight="Bold">Movie Management</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SearchTitle}" MaxHeight="25" Background="LightGray"></TextBox>
+
+            <TextBlock Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" >Genre:</TextBlock>
+            <ComboBox Grid.Row="1" Grid.Column="5" MaxHeight="25" VerticalAlignment="Center" Background="LightGray" Text="{Binding SelectedGenre}">
                 <ComboBoxItem>Action</ComboBoxItem>
                 <ComboBoxItem>Comedy</ComboBoxItem>
                 <ComboBoxItem>Crime</ComboBoxItem>
@@ -62,7 +74,7 @@
             </ComboBox>
 
             <TextBlock Grid.Row="1" Grid.Column="7" VerticalAlignment="Center">Year:</TextBlock>
-            <ComboBox Grid.Row="1" Grid.Column="9" MaxHeight="20" VerticalAlignment="Center" Text="{Binding SelectedYear}">
+            <ComboBox Grid.Row="1" Grid.Column="9" MaxHeight="25" Background="LightGray" VerticalAlignment="Center" Text="{Binding SelectedYear}">
                 <ComboBoxItem>1980</ComboBoxItem>
                 <ComboBoxItem>1981</ComboBoxItem>
                 <ComboBoxItem>1982</ComboBoxItem>
@@ -99,15 +111,22 @@
                 <ComboBoxItem>2013</ComboBoxItem>
             </ComboBox>
 
-            <Button Grid.Row="1" Grid.Column="11" HorizontalContentAlignment="Center" Command="{Binding SearchCommand}" Height="20" VerticalAlignment="Center">
+            <TextBlock Grid.Row="1" Grid.Column="11" VerticalAlignment="Center">Order by:</TextBlock>
+            <ComboBox Grid.Row="1" Grid.Column="13" MaxHeight="25" Background="LightGray" VerticalAlignment="Center" Text="{Binding SelectedOrderBy}">
+                <ComboBoxItem>Title</ComboBoxItem>
+                <ComboBoxItem>Year</ComboBoxItem>
+                <ComboBoxItem>Rating</ComboBoxItem>
+            </ComboBox>
+
+            <Button Grid.Row="1" Grid.Column="15" MaxHeight="25" HorizontalContentAlignment="Center" Command="{Binding SearchCommand}" VerticalAlignment="Center" VerticalContentAlignment="Top">
                 Search
             </Button>
 
-            <Button Grid.Row="1" Grid.Column="13" HorizontalContentAlignment="Center" Command="{Binding ResetCommand}" VerticalAlignment="Center">
+            <Button Grid.Row="1" Grid.Column="17" MaxHeight="25" HorizontalContentAlignment="Center" Command="{Binding ResetCommand}" VerticalAlignment="Center" VerticalContentAlignment="Top">
                 Reset
             </Button>
 
-            <GroupBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="13">
+            <GroupBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="17">
 
                 <ListBox x:Name="SearchMovieViewModel" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" >
                     <ListBox.ItemTemplate>
@@ -121,10 +140,12 @@
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition Width="300"></ColumnDefinition> <!--Title, Genre-->
+                                        <ColumnDefinition Width="300"></ColumnDefinition>
+                                        <!--Title, Genre-->
                                         <ColumnDefinition MaxWidth="30"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>                <!--Year, Rating-->
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <!--Year, Rating-->
                                         <ColumnDefinition MaxWidth="30"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Title: "></TextBlock>
@@ -141,14 +162,10 @@
                                 </Grid>
                             </Border>
                         </DataTemplate>
-
                     </ListBox.ItemTemplate>
                 </ListBox>
-
-
             </GroupBox>
-
-            <Button Grid.Row="3" Grid.Column="11"  HorizontalContentAlignment="Center" Command="{Binding OpenDetailCommand}" Grid.ColumnSpan="3" >Open Movie Detail</Button>
+            <Button Grid.Row="3" Grid.Column="15"  HorizontalContentAlignment="Center" Command="{Binding OpenDetailCommand}" Grid.ColumnSpan="3" >Open Movie Detail</Button>
         </Grid>
 
 

@@ -6,7 +6,7 @@ namespace MovieManagement
 {
     public interface IMovieService
     {
-        IList<Movie> SearchMovie(string title, string genre, int year);
+        IList<Movie> SearchMovie(string title, string genre, int year, string orderBy);
 
         Movie LoadMovieById(int id);
 

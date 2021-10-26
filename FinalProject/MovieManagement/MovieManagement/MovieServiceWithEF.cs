@@ -33,24 +33,85 @@ namespace MovieManagement
             }
         }
 
-        public IList<Movie> SearchMovie(string title, string genre, int year)
+        public IList<Movie> SearchMovie(string title, string genre, int year, string orderBy)
         {
             using (var ctx = new MovieContext())
             {
-                if (title == null)
+                if (orderBy == "Title")
                 {
-                var result = ctx.Movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
-                            .OrderBy(s => s.Title).ToList();
+                    if (title == null)
+                    {
+                        var result = ctx.Movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                    .OrderBy(s => s.Title).ToList();
 
-                return result;
+                        return result;
+                    }
+
+                    else
+                    {
+                        var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                 .OrderBy(s => s.Title).ToList();
+
+                        return result;
+                    }
                 }
 
+                else if (orderBy == "Year")
+                {
+                    if (title == null)
+                    {
+                        var result = ctx.Movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                    .OrderBy(s => s.Year).ToList();
+
+                        return result;
+                    }
+
+                    else
+                    {
+                        var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null)
+                                     && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                    .OrderBy(s => s.Year).ToList();
+
+                        return result;
+                    }
+                }
+
+                else if (orderBy == "Rating")
+                {
+                    if (title == null)
+                    {
+                        var result = ctx.Movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                    .OrderByDescending(s => s.Rating).ToList();
+
+                        return result;
+                    }
+
+                    else
+                    {
+                        var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null)
+                                     && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
+                                     .OrderByDescending(s => s.Rating).ToList();
+
+                        return result;
+                    }
+                }
                 else
                 {
-                    var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null) && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0))
-                             .OrderBy(s => s.Title).ToList();
+                    if (title == null)
+                    {
+                        var result = ctx.Movies.Where(s => (title == null) && (s.Genre.Contains(genre) || genre == null)
+                                     && (s.Year == year || year == 0)).ToList();
 
-                    return result;
+                        return result;
+                    }
+
+                    else
+                    {
+                        var result = ctx.Movies.Where(s => (s.Title.Contains(title) || s.Title.ToLower().Contains(title) || title == null)
+                                     && (s.Genre.Contains(genre) || genre == null) && (s.Year == year || year == 0)).ToList();
+
+                        return result;
+                    }
                 }
             }
         }

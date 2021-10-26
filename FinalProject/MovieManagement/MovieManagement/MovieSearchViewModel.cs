@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MovieManagement
@@ -88,6 +89,18 @@ namespace MovieManagement
             }
         }
 
+        private string m_SelectedOrderBy;
+
+        public string SelectedOrderBy
+        {
+            get => m_SelectedOrderBy;
+            set
+            {
+                m_SelectedOrderBy = value;
+                OnPropertyChanged(nameof(SelectedOrderBy));
+            }
+        }
+
         public ICommand SearchCommand { get; set; }
         public ICommand ResetCommand { get; set; }
         public ICommand OpenDetailCommand { get; set; }
@@ -98,10 +111,18 @@ namespace MovieManagement
         {
             movieService = new MovieServiceWithEF();
             //movieService = new MovieServiceWithFile();
-            var movieDetailViewModel = new MovieDetailViewModel(movieService , SelectedMovie.movieId);
-            Window1 studentDetail = new Window1(movieDetailViewModel);
-            studentDetail.DataContext = movieDetailViewModel;
-            studentDetail.ShowDialog();
+            if (SelectedMovie != null)
+            {
+                var movieDetailViewModel = new MovieDetailViewModel(movieService, SelectedMovie.movieId);
+                Window1 studentDetail = new Window1(movieDetailViewModel);
+                studentDetail.DataContext = movieDetailViewModel;
+                studentDetail.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a movie first!", "Error");
+            }
+                
         }
 
         public ObservableCollection<Movie> Movies { get; set; }
@@ -111,11 +132,12 @@ namespace MovieManagement
             SearchTitle = null;
             SelectedGenre = null;
             SelectedYear = 0;
+            SelectedOrderBy = null;
         }
         private void DoSearch()
         {
             Movies.Clear();
-            var result = m_movieSrv.SearchMovie(SearchTitle, SelectedGenre, SelectedYear);
+            var result = m_movieSrv.SearchMovie(SearchTitle, SelectedGenre, SelectedYear, SelectedOrderBy);
             foreach (var s in result)
             {
                 Movies.Add(s);
@@ -125,7 +147,7 @@ namespace MovieManagement
         {
             m_movieSrv = new MovieServiceWithEF();
             //m_movieSrv = new MovieServiceWithFile();
-            Movies = new ObservableCollection<Movie>(m_movieSrv.SearchMovie(string.Empty, string.Empty, int.MinValue));
+            Movies = new ObservableCollection<Movie>(m_movieSrv.SearchMovie(string.Empty, string.Empty, int.MinValue, string.Empty));
 
             OpenDetailCommand = new ConditionalCommand(x => DoOpenDetail());
             SearchCommand = new ConditionalCommand(x => DoSearch());

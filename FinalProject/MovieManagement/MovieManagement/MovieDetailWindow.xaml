@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieManagement"
         mc:Ignorable="d"
-        Title="Movie Detail" Height="300" Width="600">
+        Title="Movie Detail" MinHeight="350" MinWidth="350" Height="300" Width="500" MaxHeight="500" MaxWidth="700">
     <Window.DataContext>
         <local:MovieSearchViewModel></local:MovieSearchViewModel>
     </Window.DataContext>
@@ -31,22 +31,22 @@
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="50"></RowDefinition>
-            <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition MaxHeight="50"></RowDefinition>
-            <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition MaxHeight="50"></RowDefinition>
-            <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition MaxHeight="50"></RowDefinition>
-            <RowDefinition MaxHeight="10"></RowDefinition>
-            <RowDefinition MaxHeight="30"></RowDefinition>
-            <RowDefinition MaxHeight="10"></RowDefinition>
+            <RowDefinition MinHeight="50" MaxHeight="100"></RowDefinition>
+            <RowDefinition MinHeight="10" MaxHeight="10"></RowDefinition>
+            <RowDefinition MinHeight="50" MaxHeight="100"></RowDefinition>
+            <RowDefinition MinHeight="10" MaxHeight="10"></RowDefinition>
+            <RowDefinition MinHeight="50" MaxHeight="100"></RowDefinition>
+            <RowDefinition MinHeight="10" MaxHeight="10"></RowDefinition>
+            <RowDefinition MinHeight="50" MaxHeight="100"></RowDefinition>
+            <RowDefinition MinHeight="10" MaxHeight="10"></RowDefinition>
+            <RowDefinition MinHeight="30" MaxHeight="30"></RowDefinition>
+            <RowDefinition MinHeight="10" MaxHeight="10"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1"> Title:</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="1"> Genre:</TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="1"> Year:</TextBlock>
-        <TextBlock Grid.Row="6" Grid.Column="1"> Rating:</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"> Title:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"> Genre:</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"> Year:</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"> Rating:</TextBlock>
 
 
         <TextBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=TitleDetail}" TextWrapping="WrapWithOverflow" ></TextBox>
