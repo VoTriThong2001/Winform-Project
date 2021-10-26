@@ -49,10 +49,10 @@
         <TextBlock Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"> Rating:</TextBlock>
 
 
-        <TextBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=TitleDetail}" TextWrapping="WrapWithOverflow" ></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=GenreDetail}" TextWrapping="WrapWithOverflow"></TextBox>
-        <TextBox Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=YearDetail}"></TextBox>
-        <TextBox Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Text="{Binding Path=RatingDetail}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Background="LightGray"  Text="{Binding Path=TitleDetail}" TextWrapping="WrapWithOverflow" ></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Background="LightGray"  Text="{Binding Path=GenreDetail}" TextWrapping="WrapWithOverflow"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Background="LightGray"  Text="{Binding Path=YearDetail}"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Background="LightGray"  Text="{Binding Path=RatingDetail}"></TextBox>
         <Grid Grid.Row="6" Grid.Column="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
