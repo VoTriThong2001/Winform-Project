@@ -104,16 +104,17 @@ namespace MovieManagement
         public ICommand SearchCommand { get; set; }
         public ICommand ResetCommand { get; set; }
         public ICommand OpenDetailCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
-        private IMovieService movieService;
+  
 
         public void DoOpenDetail()
         {
-            movieService = new MovieServiceWithEF();
+            m_movieSrv = new MovieServiceWithEF();
             //movieService = new MovieServiceWithFile();
             if (SelectedMovie != null)
             {
-                var movieDetailViewModel = new MovieDetailViewModel(movieService, SelectedMovie.movieId);
+                var movieDetailViewModel = new MovieDetailViewModel(m_movieSrv, SelectedMovie.movieId);
                 Window1 studentDetail = new Window1(movieDetailViewModel);
                 studentDetail.DataContext = movieDetailViewModel;
                 studentDetail.ShowDialog();
@@ -143,6 +144,18 @@ namespace MovieManagement
                 Movies.Add(s);
             }
         }
+
+        private void DoDelete()
+        {
+            m_movieSrv.DeleteMovieById(SelectedMovie.movieId);
+            MessageBox.Show("Deleted selected movie", "Deletion");
+            Movies.Clear();
+            var result = m_movieSrv.SearchMovie(SearchTitle, SelectedGenre, SelectedYear, SelectedOrderBy);
+            foreach (var s in result)
+            {
+                Movies.Add(s);
+            }
+        }
         public MovieSearchViewModel()
         {
             m_movieSrv = new MovieServiceWithEF();
@@ -152,6 +165,7 @@ namespace MovieManagement
             OpenDetailCommand = new ConditionalCommand(x => DoOpenDetail());
             SearchCommand = new ConditionalCommand(x => DoSearch());
             ResetCommand = new ConditionalCommand(x => DoReset());
+            DeleteCommand = new ConditionalCommand(x => DoDelete());
         }
     }
 

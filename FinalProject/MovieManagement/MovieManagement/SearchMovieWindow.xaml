@@ -165,6 +165,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </GroupBox>
+            <Button Grid.Row="3" Grid.Column="13"  HorizontalContentAlignment="Center" Command="{Binding DeleteCommand}"  >Delete</Button>
             <Button Grid.Row="3" Grid.Column="15"  HorizontalContentAlignment="Center" Command="{Binding OpenDetailCommand}" Grid.ColumnSpan="3" >Open Movie Detail</Button>
         </Grid>
 
