@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace StudentManagementWithWS
+namespace TestStudentWS
 {
     class Program
     {
