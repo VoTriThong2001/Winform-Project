@@ -41,5 +41,11 @@ namespace StudentManagementWithWS
             return Ok(DeleteStudentById(id));
         }
 
+        [HttpPost]
+        public IActionResult UpdateOrCreateStudent(Student student)
+        {
+            m_studentService.UpdateOrCreateStudent(student);
+            return Ok();
+        }
     }
 }
